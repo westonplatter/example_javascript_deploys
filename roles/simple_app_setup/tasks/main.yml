@@ -4,3 +4,20 @@
     with_items: 
       - $deploy_dir
       - $deploy_app_dir
+
+  - name: copy nginx virtual host file
+    sudo: yes
+    template: src="{{app_name}}.j2" 
+              dest="/etc/nginx/sites-available/{{app_name}}" 
+              owner=root 
+              group=root
+  
+  - name: link nginx virtual host file
+    sudo: yes
+    file: src="/etc/nginx/sites-available/{{app_name}}" 
+          dest="/etc/nginx/sites-enabled/{{app_name}}" 
+          state=link
+  
+  - name: restart nginx
+    service: name=nginx 
+             state=restarted
