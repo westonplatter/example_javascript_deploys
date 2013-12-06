@@ -1,3 +1,13 @@
 ---
-  - name: todo
-    shell: "echo 'todo'"
+  - name: checkout newest code
+    git: repo={{ repo_url }}
+         update=yes
+         dest={{ deploy_app_dir }}
+
+  - name: install dependencies
+    shell: chdir={{ deploy_app_dir }} npm install
+
+  - name: start forever
+    shell: "PORT={{ port }} {{ deploy_app_dir }}/node_modules/.bin/forever start {{ deploy_app_dir }}/app.js"
+
+
