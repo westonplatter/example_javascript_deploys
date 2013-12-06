@@ -3,8 +3,20 @@
     apt: pkg=nginx state=present
 
   - name: copy nginx.conf
-    template: src=nginx.conf.j2 dest=/etc/nginx/nginx.conf owner=root group=root
+    template: src=nginx.conf.j2 dest=/etc/nginx/nginx.conf 
+              owner=root
+              group=root
+
+  - name: remove sites-available default host
+    file: dest=/etc/nginx/sites-available/default 
+          state=absent
+
+  - name: remove sites-enabled default host
+    file: dest=/etc/nginx/sites-enabled/default 
+          state=absent
 
   - name: restart nginx
-    service: name=nginx state=restarted enabled=yes
+    service: name=nginx 
+             state=restarted
+             enabled=yes
 
