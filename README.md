@@ -1,8 +1,7 @@
 example_javascript_deploys
 ==========================
 
-Examples for provision servers and deploying Javascript (nodejs/meteor) apps
-
+Examples for provisioning servers and deploying Javascript (nodejs/meteor) apps.
 
 __1. Setup Vagrant__
 ```sh
