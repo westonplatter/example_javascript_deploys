@@ -1,0 +1,9 @@
+---
+- name: Basic NodeJS server
+  hosts: all
+  sudo: yes
+  roles: 
+    - common
+    - nginx
+    - mongodb
+    - nodejs

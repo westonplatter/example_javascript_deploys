@@ -1,0 +1,6 @@
+---
+  - name: "ensure {{ deploy_dir }} exists"
+    file: name={{ item }} state=directory owner=root group=root
+    with_items: 
+      - $deploy_dir
+      - $deploy_app_dir

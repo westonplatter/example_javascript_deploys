@@ -1,0 +1,6 @@
+---
+  - name: Setup simple_app deploy
+    hosts: all
+    sudo: yes
+    roles: 
+      - simple_app_setup
